@@ -42,7 +42,8 @@ export function useGeolocation() {
 
         switch (error.code) {
           case error.PERMISSION_DENIED:
-            errorMessage = "Location permission denied. Please enable location access.";
+            errorMessage =
+              "Location permission denied. Please enable location access.";
             break;
           case error.POSITION_UNAVAILABLE:
             errorMessage = "Location information is unvailable.";
@@ -59,8 +60,9 @@ export function useGeolocation() {
           error: errorMessage,
           isLoading: false,
         });
-      },{
-        enableHighAccuracy:true,
+      },
+      {
+        enableHighAccuracy: true,
         timeout: 5000,
         maximumAge: 0,
       }
