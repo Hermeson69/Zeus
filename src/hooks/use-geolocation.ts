@@ -26,6 +26,7 @@ export function useGeolocation() {
       });
       return;
     }
+
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setLocation({
