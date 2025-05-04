@@ -18,7 +18,7 @@ export const WeatherDashboard = () => {
     }
   };
 
-  console.log(coordinates);
+
 
   if (locationLoading) {
     return <WeatehrSkeleton />;
