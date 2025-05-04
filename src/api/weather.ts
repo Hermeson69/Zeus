@@ -1,5 +1,10 @@
 import { API_CONFIG } from "./config";
-import { Coordinates, ForecastData, GeocodingResponse, WeatherData } from "./types";
+import {
+  Coordinates,
+  ForecastData,
+  GeocodingResponse,
+  WeatherData,
+} from "./types";
 
 export class WeatherAPI {
   private createUrl(endpoint: string, params: Record<string, string | number>) {
@@ -9,13 +14,18 @@ export class WeatherAPI {
     });
     return `${endpoint}?${searchParams.toString()}`;
   }
-
   private async fetchData<T>(url: string): Promise<T> {
     const response = await fetch(url);
+  
     if (!response.ok) {
-      throw new Error(`Failed to fetch data from API: ${response.statusText}`);
+      throw new Error(`Weather API Error: ${response.status} - ${response.statusText}`);
     }
-    return response.json();
+  
+    try {
+      return await response.json();
+    } catch (error) {
+      throw new Error(`Failed to parse JSON response: ${error}`);
+    }
   }
 
   async getCurrentWeather({ lat, lon }: Coordinates): Promise<WeatherData> {
@@ -34,16 +44,18 @@ export class WeatherAPI {
     });
     return this.fetchData<ForecastData>(url);
   }
-  
-  async reverseGeocode({ lat, lon }: Coordinates): Promise<GeocodingResponse[]> {
-    const url = this.createUrl(`${API_CONFIG.BASE_URL}/reverse`, {
+
+  async reverseGeocode({
+    lat,
+    lon,
+  }: Coordinates): Promise<GeocodingResponse[]> {
+    const url = this.createUrl(`${API_CONFIG.GEO}/reverse`, {
       lat: lat.toString(),
       lon: lon.toString(),
-      limit: 1,
+      limit: "1",
     });
     return this.fetchData<GeocodingResponse[]>(url);
   }
-  
 }
 
 export const weatherAPI = new WeatherAPI();
