@@ -6,7 +6,16 @@ import { WeatherDashboard } from "./pages/weather-dashboard";
 import { CityPage } from "./pages/city-pages";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query"
 function App() {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions:{
+      queries:{
+        staleTime: 5 * 60 * 1000, // apos 5 minutos que você saiu da pagina ela atualiza
+        gcTime: 10 * 60 * 1000,
+        retry: false,
+        refetchOnWindowFocus: false,
+      },
+    },
+  });
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
