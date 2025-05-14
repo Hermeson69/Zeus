@@ -17,7 +17,7 @@ export const Header = () => {
         <div onClick={() => setTheme(isDark ? "light" : "dark")} className={`flex items-center cursor-pointer transition-transform duration-500
             ${isDark ? "rotate-180" : "rotate-0"}
             `}>
-          {isDark ? <Sun className="h-6 text-yellow-500 rotate-0 transition-all"/> : <Moon className="h-6 text-bllue-500 rotate-0 transition-all"/>}
+          {isDark ? <Sun className="h-6 text-yellow-500 rotate-0 transition-all"/> : <Moon className="h-6 text-yellow-300 rotate-0 transition-all"/>}
         </div>
       </div>
       </div>
