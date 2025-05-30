@@ -1,4 +1,5 @@
 import { CurrentWeather } from "@/components/CurrentWeather";
+import { HourltTemperature } from "@/components/hourly-temperature";
 import WeatehrSkeleton from "@/components/loading-skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -115,20 +116,24 @@ export const WeatherDashboard = () => {
           onClick={handleRefresh}
           disabled={weatherQuery.isFetching || forecastQuery.isFetching}
         >
-          <RefreshCw className={`h-4 w-4 ${weatherQuery.isFetching?"animate-spin": ""
-          }`} />
+          <RefreshCw
+            className={`h-4 w-4 ${
+              weatherQuery.isFetching ? "animate-spin" : ""
+            }`}
+          />
         </Button>
       </div>
 
       {/*Current and hourly weather */}
       <div className="grid gap-6">
-        <div>
-            <CurrentWeather data={weatherQuery.data} locationName={locationName}/> 
-          {/* <CurrentWeather data={weatherQuery.data} locationName={locationName}/> */}
+        <div className="flex flex-col lg:flex-row gap-4">
+          <CurrentWeather
+            data={weatherQuery.data}
+            locationName={locationName}
+          />
+          <HourltTemperature data={forecastQuery.data}/>
         </div>
-        <div>
-          details
-        </div>
+        <div>details</div>
       </div>
     </div>
   );
