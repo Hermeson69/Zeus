@@ -1,3 +1,4 @@
+import { CurrentWeather } from "@/components/CurrentWeather";
 import WeatehrSkeleton from "@/components/loading-skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -100,7 +101,7 @@ export const WeatherDashboard = () => {
   }
 
   if (!weatherQuery.data || !forecastQuery.data) {
-    <WeatehrSkeleton />;
+    return <WeatehrSkeleton />;
   }
 
   return (
@@ -122,6 +123,7 @@ export const WeatherDashboard = () => {
       {/*Current and hourly weather */}
       <div className="grid gap-6">
         <div>
+            <CurrentWeather data={weatherQuery.data} locationName={locationName}/> 
           {/* <CurrentWeather data={weatherQuery.data} locationName={locationName}/> */}
         </div>
         <div>
