@@ -16,7 +16,7 @@ export function HourltTemperature({ data }: HourlyTemperatureProps) {
   return (
     <Card className="flex-1">
       <CardHeader>
-        <CardTitle>Card Title</CardTitle>
+        <CardTitle>Temperature graphic for next Hours</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="h-[200px] w-full">
