@@ -40,7 +40,7 @@ const formatTime = (timeStamp: number) => {
     },
     {
       title: "Pressure",
-      value: `${main.pressure}`,
+      value: `${main.pressure} hPa`,
       icon: Gauge,
       color: "text-purple-500",
     },
