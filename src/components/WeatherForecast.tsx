@@ -1,4 +1,5 @@
 import type { ForecastData } from "@/api/types";
+import { Card } from "./ui/card";
 
 interface WeatherForecastProps {
     data: ForecastData;
@@ -6,7 +7,8 @@ interface WeatherForecastProps {
 
 export function WeatherForecast({ data }: WeatherForecastProps) {
     return (
-        <div>
-        </div>
+        <Card>
+            
+        </Card>
     );
 }
