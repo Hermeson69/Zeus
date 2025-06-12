@@ -14,7 +14,7 @@ export function HourltTemperature({ data }: HourlyTemperatureProps) {
     feels_like: Math.round(item.main.feels_like),
   }));
   return (
-    <Card className="flex-1">
+    <Card className="flex-1 mt-10">
       <CardHeader>
         <CardTitle>Temperature graphic for next Hours</CardTitle>
       </CardHeader>
